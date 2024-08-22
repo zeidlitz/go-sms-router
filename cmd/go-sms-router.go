@@ -19,9 +19,10 @@ type Config struct {
 func main() {
 
     var cfg Config
-    cfg.username = env.GetString("USERNAME", "")
-    cfg.password = env.GetString("PASSWORD", "")
-    cfg.sender = env.GetString("SENDER", "DefaultSender")
+    cfg.username = env.GetString("ELKS_API_USERNAME", "")
+    cfg.password = env.GetString("ELKS_API_PASSWORD", "")
+    cfg.sender = env.GetString("SENDER", "SmsBot")
+    slog.Info("Variables", "USERNAME", cfg.username, "PASSWORD", cfg.password)
 
 
     message := "Hello 👋"
