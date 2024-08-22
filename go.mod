@@ -1,3 +1,3 @@
-module github.com/zeidlitz/go-sms-router
+module github.com/zeidlitz/sms-router
 
 go 1.21.5

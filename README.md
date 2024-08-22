@@ -1,4 +1,4 @@
-# go-sms-router
+# sms-router
 
 Route SMS using the 46elks API and Go
 
