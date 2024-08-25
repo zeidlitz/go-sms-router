@@ -22,7 +22,6 @@ func main() {
 	cfg.username = env.GetString("ELKS_API_USERNAME", "")
 	cfg.password = env.GetString("ELKS_API_PASSWORD", "")
 	cfg.sender = env.GetString("SENDER", "SmsBot")
-	slog.Info("Variables", "USERNAME", cfg.username, "PASSWORD", cfg.password)
 
 	message := "Hello 👋"
 	slog.Info("Attempting to send message", "message", message)
