@@ -2,12 +2,13 @@ package main
 
 import (
 	"bytes"
-	"github.com/zeidlitz/sms-router/internal/env"
 	"io"
 	"log/slog"
 	"net/http"
 	"net/url"
 	"strconv"
+
+	"github.com/zeidlitz/sms-router/internal/env"
 )
 
 type Config struct {
@@ -17,7 +18,6 @@ type Config struct {
 }
 
 func main() {
-
 	var cfg Config
 	cfg.username = env.GetString("ELKS_API_USERNAME", "")
 	cfg.password = env.GetString("ELKS_API_PASSWORD", "")
