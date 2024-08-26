@@ -22,7 +22,7 @@ To use you will need to have a verified 46elks user with usable credits. Under [
 
 When running, sms-router exposes a set of endpoints that can be used to send or recieve messages on
 
-## /send
+### /send
 
 This endpoint will take the payload message and send it as a message to the destination phone number. 
 
@@ -31,7 +31,6 @@ This endpoint will take the payload message and send it as a message to the dest
 Server startup
 
 ```golang
-  var cfg Config
   cfg.host = env.GetString("SMS_ROUTER_HOST", "localhost")
   cfg.port = env.GetInt("SMS_ROUTER_PORT", 8080)
   host := fmt.Sprintf(cfg.host+":"+"%d", cfg.port)
@@ -43,23 +42,23 @@ Server startup
 Sending messages with the 46elks API
 
 ```golang
-	data := url.Values{
-		"from":    {cfg.sender},
-		"to":      {"+46738923036"},
-		"message": {message}}
+data := url.Values{
+    "from":    {cfg.sender},
+    "to":      {"+46738923036"},
+    "message": {message}}
 
-	req, err := http.NewRequest("POST", "https://api.46elks.com/a1/SMS", bytes.NewBufferString(data.Encode()))
-	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
-	req.Header.Add("Content-Length", strconv.Itoa(len(data.Encode())))
-	req.SetBasicAuth(cfg.username, cfg.password)
+req, err := http.NewRequest("POST", "https://api.46elks.com/a1/SMS", bytes.NewBufferString(data.Encode()))
+req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
+req.Header.Add("Content-Length", strconv.Itoa(len(data.Encode())))
+req.SetBasicAuth(cfg.username, cfg.password)
 
-	client := &http.Client{}
-	resp, err := client.Do(req)
+client := &http.Client{}
+resp, err := client.Do(req)
 
-	if err != nil {
-		slog.Error("Error when sending request", "ERROR:", err.Error())
-    return err
-	}
+if err != nil {
+    slog.Error("Error when sending request", "ERROR:", err.Error())
+return err
+}
 ```
 
 # sources
