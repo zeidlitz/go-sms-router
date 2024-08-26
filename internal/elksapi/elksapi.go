@@ -28,7 +28,7 @@ func Send(message string) (err error) {
 
 	data := url.Values{
 		"from":    {cfg.sender},
-		"to":      {"+46738923036"},
+    "to":      {"+46123456789"},
 		"message": {message}}
 
 	req, err := http.NewRequest("POST", "https://api.46elks.com/a1/SMS", bytes.NewBufferString(data.Encode()))
